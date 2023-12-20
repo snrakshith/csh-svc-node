@@ -1,0 +1,8 @@
+/node_modules
+Dockerfile
+.dockerignore
+.github
+LICENSE
+CHANGELOG.md
+CONTRIBUTING.md
+README.md
