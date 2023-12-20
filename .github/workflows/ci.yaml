@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main"]
 
-env: 
+env:
   IMAGE_TAG: dev-${{ github.sha }}
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
 
       - name: Build, tag, and push image to Amazon ECR
         run: |
-        ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}
-        IMAGE_REPO_NAME=csh-svc-node
-        docker build -t $ECR_REGISTRY/$IMAGE_REPO_NAME:${{ env.IMAGE_TAG }} .
-        docker push $ECR_REGISTRY/$IMAGE_REPO_NAME:${{ env.IMAGE_TAG }}
+          ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}
+          IMAGE_REPO_NAME=csh-svc-node
+          docker build -t $ECR_REGISTRY/$IMAGE_REPO_NAME:${{ env.IMAGE_TAG }} .
+          docker push $ECR_REGISTRY/$IMAGE_REPO_NAME:${{ env.IMAGE_TAG }}
