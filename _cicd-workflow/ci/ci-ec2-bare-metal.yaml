@@ -1,4 +1,4 @@
-name: Deploy to ECR
+name: Deploy Node App to AWS EC2 bare metal
 
 on:
   push:

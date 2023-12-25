@@ -1,4 +1,4 @@
-name: Deploy to ECR
+name: Deploy Node App to AWS Elastic beanstalk
 
 on:
   push:

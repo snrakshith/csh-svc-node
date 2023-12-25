@@ -1,4 +1,4 @@
-name: Deploy to ECR
+name: Publish Docker Image to private ECR
 
 on:
   push:
