@@ -24,6 +24,9 @@ jobs:
       - name: Install project dependencies
         run: npm ci
 
+      - name: Build the app
+        run: npm run build
+
       # - name: Paste in environment values
       #   run: |
       #     touch .env
