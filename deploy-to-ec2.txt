@@ -1,0 +1,13 @@
+chmod 400 nodejs-ec2.pem
+ssh -i "nodejs-ec2.pem" ubuntu@ec2-13-233-86-234.ap-south-1.compute.amazonaws.com
+sudo apt update
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo apt-get install -y nginx
+sudo npm i -g pm2
+
+Configure nginx with proxy information
+cd /etc/nginx/sites-available
+then type ls cmd, were you see a file "default"
+edit the file with
+"sudo nano default"
