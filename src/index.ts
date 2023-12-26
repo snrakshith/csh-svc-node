@@ -9,6 +9,13 @@ const port = 4000;
 const app = express();
 const specs = swaggerJsDoc(swaggerOptions);
 
+app.get("/api/docs/healthcheck", (req: Request, res: Response) => {
+  res.json({ status: 200, message: "Fine!!" });
+});
+
+app.get("/api/docs/test", (req: Request, res: Response) => {
+  res.json({ status: 200, message: "Running Successfully" });
+});
 app.use(express.json());
 
 app.use(cors(corsOptions));
@@ -27,14 +34,6 @@ app.use("/api/docs", swaggerUI.serve, swaggerUI.setup(specs));
 app.get("/api-docs.json", (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.send(specs);
-});
-
-app.get("/test", (req: Request, res: Response) => {
-  res.json({ status: 200, message: "Running Successfully" });
-});
-
-app.get("/", (req: Request, res: Response) => {
-  res.json({ status: 200, message: "Fine!!" });
 });
 
 app.listen(port, () => console.log(`listening on ${port}`));

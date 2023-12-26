@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "Patient backend",
+      name: "CSH-backend",
       script: "./dist/index.js",
       watch: ".",
       instances: 1,
