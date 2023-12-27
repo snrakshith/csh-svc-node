@@ -24,10 +24,13 @@ jobs:
       - name: Install project dependencies
         run: npm ci
 
+      - name: Build the app
+        run: npm run build
+
       # - name: Paste in environment values
       #   run: |
       #     touch .env
       #     echo "${{ secrets.PROD_ENV_FILE }}" > .env
 
       - name: Restart the app
-        run: pm2 restart csh-node
+        run: pm2 restart CSH-backend

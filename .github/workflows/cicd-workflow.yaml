@@ -1,36 +1,35 @@
-name: Node.js CI/CD
+# name: Dockerize node app to deploy it to EC2
 
-on:
-  push:
-    branches: ["main"]
+# on:
+#   push:
+#     branches: ["main"]
 
-jobs:
-  build:
-    runs-on: self-hosted
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    steps:
-      - name: Checkout to the repo
-        uses: actions/checkout@v3
+# jobs:
+#   build:
+#     name: Build Image
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout source
+#         uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+#       - name: Login to docker hub
+#         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Install project dependencies
-        run: npm ci
+#       - name: Build docker image
+#         run: docker build -t integrationninjas/nodejs-app .
 
-      - name: Build the app
-        run: npm run build
+#       - name: Publish image to docker hub
+#         run: docker push integrationninjas/nodejs-app:latest
 
-      # - name: Paste in environment values
-      #   run: |
-      #     touch .env
-      #     echo "${{ secrets.PROD_ENV_FILE }}" > .env
+#   deploy:
+#     needs: build
+#     runs-on: self-hosted # [aws-ec2]
+#     steps:
+#       - name: Pull image from docker hub
+#         run: docker pull integrationninjas/nodejs-app:latest
 
-      - name: Restart the app
-        run: pm2 restart CSH-backend
+#       - name: Delete old container
+#         run: docker rm -f nodejs-app-container
+
+#       - name: Run docker container
+#         run: docker run -d -p 5000:5000 --name nodejs-app-container integrationninjas/nodejs-app
