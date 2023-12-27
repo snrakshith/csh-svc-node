@@ -11,7 +11,7 @@ export const swaggerOptions = {
     info: {
       title: "Sample REST API",
       version: "1.0.0",
-      description: "iKure CHW Patient Repository Swagger Documentation.",
+      description: "CSH-backend Repository Swagger Documentation.",
     },
     servers: [
       {
