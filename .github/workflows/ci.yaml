@@ -36,3 +36,10 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          # Pull Docker image
+          sudo docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          # Delete Old docker container
+          sudo docker rm -f $ECR_REPOSITORY-container || true
+          # Run Docker Container
+          sudo docker run -d -p 4000:4000 --name $ECR_REPOSITORY-container $ECR_REGISTRY/$ECR_REPOSITORY
+
