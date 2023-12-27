@@ -18,7 +18,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1 # Replace with your AWS region
+          aws-region: us-east-1 # Replace with your AWS region
 
       - name: Login to Amazon ECR Public
         id: login-ecr-public
@@ -33,8 +33,8 @@ jobs:
           ECR_REPOSITORY: csh-svc-node
           IMAGE_TAG: dev-${{ github.sha }}
         run: |
-          docker build -t public.ecr.aws/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push public.ecr.aws/$ECR_REPOSITORY:$IMAGE_TAG
+          # docker build -t public.ecr.aws/$ECR_REPOSITORY:$IMAGE_TAG .
+          # docker push public.ecr.aws/$ECR_REPOSITORY:$IMAGE_TAG
 
-          # docker build -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG .
-          # docker push $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG
