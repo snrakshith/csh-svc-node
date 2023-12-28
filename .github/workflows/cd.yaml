@@ -17,7 +17,7 @@ jobs:
       - name: Delete Old docker container
         run: sudo docker rm -f csh-svc-node-container || true
       - name: Run Docker Container
-        run: sudo docker run -d -p 8080:8080 --name csh-svc-node-container snrakshith/csh-svc-node
+        run: sudo docker run -d -p 4000:4000 --name csh-svc-node-container snrakshith/csh-svc-node
       # - name: Configure AWS credentials
       #   uses: aws-actions/configure-aws-credentials@v4
       #   with:
