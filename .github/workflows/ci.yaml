@@ -27,4 +27,4 @@ jobs:
         run: docker build -t snrakshith/csh-svc-node .
 
       - name: Push to Dockerhub
-        run: docker push snrakshith/csh-svc-node:$APP_VERSION :latest
+        run: docker push snrakshith/csh-svc-node:$APP_VERSION
