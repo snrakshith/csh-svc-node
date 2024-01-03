@@ -24,7 +24,7 @@ jobs:
         run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
       - name: Build the Docker image
-        run: docker build -t snrakshith/csh-svc-node .
+        run: docker build -t snrakshith/csh-svc-node:$APP_VERSION .
 
       - name: Push to Dockerhub
         run: docker push snrakshith/csh-svc-node:$APP_VERSION
