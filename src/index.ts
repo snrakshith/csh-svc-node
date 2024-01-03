@@ -16,6 +16,11 @@ app.get("/api/docs/healthcheck", (req: Request, res: Response) => {
 app.get("/api/docs/test", (req: Request, res: Response) => {
   res.json({ status: 200, message: "Running Successfully" });
 });
+
+app.get("/api/docs/kargo", (req: Request, res: Response) => {
+  res.json({ status: 200, message: "Ran" });
+});
+
 app.use(express.json());
 
 app.use(cors(corsOptions));

@@ -1,6 +1,6 @@
 {
   "name": "csh-svc-node",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "POC for node.js app with devops pipeline",
   "main": "./src/index.ts",
   "keywords": [
